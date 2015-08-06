@@ -5,13 +5,11 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 module.exports = function() {
-   // TODO: Add steps
-   this.Given("I am a user", function (next) {
+
+   this.Given(/^I am a user$/, function (next) {
    	browser.get('http://localhost:3001/');
 
-	browser.debugger();
-		expect(browser.getTitle()).to.equal('Quality Assister');
-   		next();
+	expect(browser.getTitle()).to.eventually.equal('Quality Assister').and.notify(next);
    	
    });
 
